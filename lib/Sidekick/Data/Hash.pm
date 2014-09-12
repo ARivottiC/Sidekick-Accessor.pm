@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-package Sidekick::DataType;
+package Sidekick::Data::Hash;
 
 use strict;
 use warnings;
