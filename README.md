@@ -1,6 +1,6 @@
 # NAME
 
-Sidekick::DataType - we'll get there
+Sidekick::Data - we'll get there
 
 # VERSION
 
