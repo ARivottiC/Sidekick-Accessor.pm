@@ -1,26 +1,42 @@
 #!/usr/bin/perl
 package Sidekick::Data;
 
+use v5.10;
+
 use strict;
 use warnings;
 
-use Hash::Util::FieldHash ();
+use Log::Log4perl qw(:nowarn);
+use Module::Pluggable::Object ();
 
-Hash::Util::FieldHash::fieldhash my %Hash;
-
-use overload
-    '%{}'      => sub { return { %{ $Hash{ shift() } } } },
-    'fallback' => 1;
+my %Plugin;
+my $logger = Log::Log4perl->get_logger;
 
 sub new {
-    my $class = shift;
-    my %arg   = @_;
+    my $self = shift;
+    my %arg  = @_;
+    my $data = delete $arg{'data'}
+        || $logger->logcroak(q{required parameter 'data'});
 
-    my $self  = bless \( my $o ), ref $class || $class;
+    if ( my $class = $Plugin{ ref( $data ) } ) {
+        return $class->new( %arg, 'data' => $data );
+    }
 
-    $Hash{ $self } = { %arg };
+    return $data;
+}
 
-    return $self;
+# dinamically add is_* methods based on plugins
+my $finder = Module::Pluggable::Object->new(
+        'package' => __PACKAGE__, 'require' => 1,
+    );
+
+{
+    no strict 'refs';
+    for my $plugin ( $finder->plugins ) {
+        my $name = join( '::', ( split '::', $plugin )[3,] );
+        $logger->trace('mapped ', $plugin, ' as ', $name);
+        $Plugin{ $name } = $plugin;
+    }
 }
 
 1;
