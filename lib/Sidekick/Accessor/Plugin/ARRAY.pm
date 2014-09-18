@@ -8,20 +8,13 @@ use Sidekick::Accessor ();
 use Hash::Util::FieldHash ();
 use Log::Log4perl qw(:nowarn);
 
-Hash::Util::FieldHash::fieldhashes \my( %Data, %Sub );
+Hash::Util::FieldHash::fieldhash my %Data;
 
 use overload
-    '@{}'      => sub {
-        my $self = shift;
-        my $sub  = $Sub{ $self };
-        return $self->$sub;
-    },
+    '@{}'      => sub { $Data{ shift() } },
     'fallback' => 1;
 
 my $logger = Log::Log4perl->get_logger;
-
-# For internal functions
-my ($rw, $ro);
 
 sub new {
     my $class = shift;
@@ -37,14 +30,17 @@ sub new {
         $value = Sidekick::Accessor->new( %arg, 'data' => $value );
     }
 
-    $Sub{  $self } = $arg{'ro'} ? $ro : $rw;
+    if ( $arg{'ro'} ) {
+        Internals::SvREADONLY @{ $data }, 1;
+
+        for my $value ( values @{ $data } ) {
+            Internals::SvREADONLY $value, 1;
+        }
+    }
     $Data{ $self } = $data;
 
     return $self;
 }
-
-$rw = sub { return $Data{ shift() } };
-$ro = sub { return [ @{ $Data{ shift() } } ] };
 
 sub AUTOLOAD {
     my $self  = shift;
