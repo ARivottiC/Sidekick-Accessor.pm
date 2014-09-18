@@ -1,6 +1,6 @@
 # NAME
 
-Sidekick::Data - we'll get there
+Sidekick::Accessor - we'll get there
 
 # VERSION
 
