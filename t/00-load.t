@@ -6,7 +6,7 @@ use warnings;
 use Test::More tests => 1; # last test to print
 
 BEGIN {
-   use_ok('Sidekick::Data');
+   use_ok('Sidekick::Accessor');
 }
 
 diag("Testing Sample::Module $Sample::Module::VERSION");

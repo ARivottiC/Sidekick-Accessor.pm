@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-package Sidekick::Data;
+package Sidekick::Accessor;
 
 use v5.10;
 

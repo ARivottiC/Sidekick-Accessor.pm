@@ -1,10 +1,10 @@
 #!/usr/bin/perl
-package Sidekick::Data::Plugin::ARRAY;
+package Sidekick::Accessor::Plugin::ARRAY;
 
 use strict;
 use warnings;
 
-use Sidekick::Data ();
+use Sidekick::Accessor ();
 use Hash::Util::FieldHash ();
 use Log::Log4perl qw(:nowarn);
 
@@ -34,7 +34,7 @@ sub new {
     my $self  = bless \( my $o ), ref $class || $class;
 
     for my $value ( @{ $data } ) {
-        $value = Sidekick::Data->new( %arg, 'data' => $value );
+        $value = Sidekick::Accessor->new( %arg, 'data' => $value );
     }
 
     $Sub{  $self } = $arg{'ro'} ? $ro : $rw;
