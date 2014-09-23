@@ -40,5 +40,34 @@ my $finder = Module::Pluggable::Object->new(
 }
 
 1;
-# ABSTRACT: we'll get there
+# ABSTRACT: Access HASH and ARRAY values as methods
 # vim:ts=4:sw=4:syn=perl
+__END__
+=pod
+
+=head1 SYNOPSIS
+
+    my $hashref = Sidekick::Accessor->new( 'data' => { 'one' => 1, 'two' => 2 } );
+    print $hashref->one     ; # same as $hashref->{'one'}
+    print keys %{ $hashref };
+
+    my $arrayref = Sidekick::Accessor->new( 'ro' => 1, 'data' => [ 1, 2, 3 ] );
+    print $arrayref->item2; # same as $arrayref->[2]
+    push @{ $arrayref }, 4; # will croak
+
+
+=head1 DESCRIPTION
+
+C<Sidekick::Accessor> provides a way to access HASH and ARRAY values as methods, while keeping the original Data Type and it's functionality.
+
+=method new
+
+=head1 PLUGINS
+
+=head1 SEE ALSO
+
+=for :list
+* L<Sidekick::Accessor::Plugin::ARRAY>
+* L<Sidekick::Accessor::Plugin::HASH>
+
+=cut
