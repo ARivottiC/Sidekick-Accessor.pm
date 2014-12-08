@@ -6,7 +6,6 @@ use warnings;
 
 use Sidekick::Accessor ();
 use Hash::Util::FieldHash ();
-use Log::Log4perl qw(:nowarn);
 
 Hash::Util::FieldHash::fieldhash my %Data;
 
@@ -21,13 +20,15 @@ sub new {
     my %arg   = @_;
     my $data  = delete $arg{'data'};
 
-    $logger->logcroak('data must be an HASH ref')
+    croak 'data must be an HASH ref'
         unless ref $data eq 'HASH';
 
     my $self  = bless \( my $o ), ref $class || $class;
 
     for my $key ( keys %{ $data } ) {
-        $data->{ $key } = Sidekick::Accessor->new( %arg, 'data' => $data->{ $key } );
+        $data->{ $key } = Sidekick::Accessor->new(
+            %arg, 'data' => $data->{ $key }
+        );
     }
 
     if ( $arg{'ro'} ) {

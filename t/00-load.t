@@ -9,6 +9,6 @@ BEGIN {
    use_ok('Sidekick::Accessor');
 }
 
-diag("Testing Sample::Module $Sample::Module::VERSION");
+diag("Testing Sidekick::Accessor $Sidekick::Accessor::VERSION");
 
 # vim:ts=4:sw=4:syn=perl

@@ -6,7 +6,6 @@ use v5.10;
 use strict;
 use warnings;
 
-use Log::Log4perl qw(:nowarn);
 use Module::Pluggable::Object ();
 
 my %Plugin;
@@ -34,7 +33,6 @@ my $finder = Module::Pluggable::Object->new(
     no strict 'refs';
     for my $plugin ( $finder->plugins ) {
         my $name = join( '::', ( split '::', $plugin )[3,] );
-        $logger->trace('mapped ', $plugin, ' as ', $name);
         $Plugin{ $name } = $plugin;
     }
 }
@@ -47,18 +45,23 @@ __END__
 
 =head1 SYNOPSIS
 
-    my $hashref = Sidekick::Accessor->new( 'data' => { 'one' => 1, 'two' => 2 } );
+    my $hashref = Sidekick::Accessor->new(
+        'data' => { 'one' => 1, 'two' => 2 }
+    );
     print $hashref->one     ; # same as $hashref->{'one'}
     print keys %{ $hashref };
 
-    my $arrayref = Sidekick::Accessor->new( 'ro' => 1, 'data' => [ 1, 2, 3 ] );
+    my $arrayref = Sidekick::Accessor->new(
+        'ro' => 1, 'data' => [ 1, 2, 3 ]
+    );
     print $arrayref->item2; # same as $arrayref->[2]
     push @{ $arrayref }, 4; # will croak
 
 
 =head1 DESCRIPTION
 
-C<Sidekick::Accessor> provides a way to access HASH and ARRAY values as methods, while keeping the original Data Type and it's functionality.
+C<Sidekick::Accessor> provides a way to access HASH and ARRAY values as
+methods, while keeping the original Data Type and it's functionality.
 
 =method new
 

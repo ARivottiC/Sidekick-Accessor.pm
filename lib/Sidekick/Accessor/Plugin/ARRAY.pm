@@ -21,7 +21,7 @@ sub new {
     my %arg   = @_;
     my $data  = delete $arg{'data'};
 
-    $logger->logcroak('data must be an HASH ref')
+    croak 'data must be an ARRAY ref'
         unless ref $data eq 'ARRAY';
 
     my $self  = bless \( my $o ), ref $class || $class;
