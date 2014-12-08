@@ -15,7 +15,7 @@ sub new {
     my $self = shift;
     my %arg  = @_;
     my $data = delete $arg{'data'}
-        || $logger->logcroak(q{required parameter 'data'});
+        || croak q{required parameter 'data'};
 
     if ( my $class = $Plugin{ ref( $data ) } ) {
         return $class->new( %arg, 'data' => $data );

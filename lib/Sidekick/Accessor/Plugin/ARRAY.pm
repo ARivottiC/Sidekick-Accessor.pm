@@ -6,7 +6,6 @@ use warnings;
 
 use Sidekick::Accessor ();
 use Hash::Util::FieldHash ();
-use Log::Log4perl qw(:nowarn);
 
 Hash::Util::FieldHash::fieldhash my %Data;
 
