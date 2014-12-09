@@ -5,6 +5,7 @@ use strict;
 use warnings;
 
 use Sidekick::Accessor ();
+use Carp ();
 use Hash::Util::FieldHash ();
 
 Hash::Util::FieldHash::fieldhash my %Data;
@@ -13,14 +14,12 @@ use overload
     '%{}'      => sub { $Data{ shift() } },
     'fallback' => 1;
 
-my $logger = Log::Log4perl->get_logger;
-
 sub new {
     my $class = shift;
     my %arg   = @_;
     my $data  = delete $arg{'data'};
 
-    croak 'data must be an HASH ref'
+    Carp::croak 'data must be an HASH ref'
         unless ref $data eq 'HASH';
 
     my $self  = bless \( my $o ), ref $class || $class;
