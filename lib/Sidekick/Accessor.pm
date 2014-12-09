@@ -43,6 +43,9 @@ my $finder = Module::Pluggable::Object->new(
 __END__
 =pod
 
+=for HTML <a href="https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm"><
+img src="https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm.svg"></a>
+
 =head1 SYNOPSIS
 
     my $hashref = Sidekick::Accessor->new(
