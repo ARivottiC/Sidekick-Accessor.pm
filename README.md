@@ -1,6 +1,6 @@
 # NAME
 
-Sidekick::Accessor - we'll get there
+Sidekick::Accessor - Access HASH and ARRAY values as methods
 
 # VERSION
 
@@ -8,25 +8,26 @@ version 0.0.1
 
 # SYNOPSIS
 
-    my $hashref = Sidekick::Accessor->new( 'data' => { 'one' => 1, 'two' => 2 } );
+    my $hashref = Sidekick::Accessor->new(
+        'data' => { 'one' => 1, 'two' => 2 }
+    );
     print $hashref->one     ; # same as $hashref->{'one'}
     print keys %{ $hashref };
 
-    my $arrayref = Sidekick::Accessor->new( 'ro' => 1, 'data' => [ 1, 2, 3 ] );
+    my $arrayref = Sidekick::Accessor->new(
+        'ro' => 1, 'data' => [ 1, 2, 3 ]
+    );
     print $arrayref->item2; # same as $arrayref->[2]
     push @{ $arrayref }, 4; # will croak
 
 # DESCRIPTION
 
-`Sidekick::Accessor` provides a way to access HASH and ARRAY values as methods, while keeping the original Data Type and it's functionality.
+`Sidekick::Accessor` provides a way to access HASH and ARRAY values as
+methods, while keeping the original Data Type and it's functionality.
 
 # METHODS
 
 ## new
-
-## attr ro
-
-## attr data
 
 # PLUGINS
 
