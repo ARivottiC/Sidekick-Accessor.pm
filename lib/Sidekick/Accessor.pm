@@ -43,8 +43,8 @@ my $finder = Module::Pluggable::Object->new(
 __END__
 =pod
 
-=for HTML <a href="https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm"><
-img src="https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm.svg"></a>
+=for :Travis
+=for markdown [![Build Status](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm.svg)](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm)
 
 =head1 SYNOPSIS
 

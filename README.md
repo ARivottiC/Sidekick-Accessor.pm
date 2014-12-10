@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm.svg)](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm)
+
 # NAME
 
 Sidekick::Accessor - Access HASH and ARRAY values as methods
