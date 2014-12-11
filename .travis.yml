@@ -19,10 +19,10 @@ before_install:
     - cpanm Pod::Elemental::Transformer::List
     - git config --global user.name "TravisCI"
     - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
-    - "dzil authordeps | grep -vP ‘[^\w:]‘ | xargs -n 5 -P 10 cpanm"
+    - "dzil authordeps | grep -vP '[^\w:]' | xargs -n 5 -P 10 cpanm"
     - "dzil listdeps --author | cpanm"
 install:
-    - "dzil listdeps | grep -vP ‘[^\w:]‘ | cpanm"
+    - "dzil listdeps | grep -vP '[^\w:]' | cpanm"
 script:
     - dzil smoke --release --author
 after_success:
