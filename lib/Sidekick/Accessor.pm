@@ -43,8 +43,11 @@ my $finder = Module::Pluggable::Object->new(
 __END__
 =pod
 
-=for :Travis
-=for markdown [![Build Status](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm.svg)](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm)
+=for :Badges
+=for markdown
+[![Build Status](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm.svg)](https://travis-ci.org/ARivottiC/Sidekick-Accessor.pm)
+[![Coverage Status](https://coveralls.io/repos/ARivottiC/Sidekick-Accessor.pm/badge.png)](https://coveralls.io/r/ARivottiC/Sidekick-Accessor.pm)
+[![CPAN version](https://badge.fury.io/pl/Sidekick-Accessor.svg)](http://badge.fury.io/pl/Sidekick-Accessor)
 
 =head1 SYNOPSIS
 
