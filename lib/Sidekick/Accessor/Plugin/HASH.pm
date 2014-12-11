@@ -54,3 +54,8 @@ sub AUTOLOAD {
 1;
 # ABSTRACT: we'll get there
 # vim:ts=4:sw=4:syn=perl
+=pod
+
+=method new
+
+=cut
