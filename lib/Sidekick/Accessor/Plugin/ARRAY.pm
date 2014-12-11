@@ -31,7 +31,7 @@ sub new {
     if ( $arg{'ro'} ) {
         Internals::SvREADONLY @{ $data }, 1;
 
-        for my $value ( values @{ $data } ) {
+        for my $value ( @{ $data } ) {
             Internals::SvREADONLY $value, 1;
         }
     }

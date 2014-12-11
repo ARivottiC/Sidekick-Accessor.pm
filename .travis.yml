@@ -12,14 +12,14 @@ before_install:
     - source perl-travis-helper/init
     - build-perl
     - perl -V
+    - git config --global user.name 'TravisCI'
+    - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
 install:
     - cpanm Dist::Zilla
     - cpanm Devel::Cover::Report::Coveralls
     - cpanm Dist::Zilla::App::Command::cover
     - cpanm https://cpan.metacpan.org/authors/id/K/KE/KEEDI/Dist-Zilla-Plugin-GitFlow-0.010.tar.gz
     - cpanm Pod::Elemental::Transformer::List
-    - git config --global user.name 'TravisCI'
-    - git config --global user.email $HOSTNAME":not-for-mail@travis-ci.org"
     - dzil authordeps | grep -vP '[^\w:]' | xargs -n 5 -P 10 cpanm
     - dzil listdeps --author | grep -vP '[^\w:]' | cpanm
 script:
